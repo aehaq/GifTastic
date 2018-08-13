@@ -1,0 +1,69 @@
+index.html
+    create container along top of page for buttons. (9 col)
+    create page title (3 col) (fixed position)
+
+    create container for gifs (9 col)
+    create search form (fixed position)
+
+javascript
+    create topicsArray for button topics
+
+    create function for displaybuttons
+        
+        for (every) topic in topicsArray
+            append button to div 
+            give button necessary classes (topicButton)
+            give button text = topic
+            create variable for ID = to topic without spaces
+            give button ID = ID variable
+            give button value = ID variable
+
+    searchForm on click function
+
+        prevent default button action
+
+        if (string is not blank && string is not in array already)
+            take input value, push to topicsArray
+            run displaybuttons function
+
+        clear input form
+
+    topicButton onclick
+
+        prevent default button action
+
+        set searchQuery = button value
+        set queryurl equal to 'http://api.giphy.com/v1/gifs/search?q=' + searchQuery + '&api_key=YOUR_API_KEY&limit=10'
+
+        ajax call item
+            url: query url
+            method: get
+            then set function to response
+
+                set result as shortcut for response.data
+
+                set newdiv as div with imgcontainer class
+
+                set newImg = to image with url result.images.original_still
+                give newImg attribute for still image = result.images.original_still
+                give newImg attribute for animated image = result.images.original
+                give newImg attribute for status = "still"
+                append image to newdiv
+                append newdiv to image container
+
+                
+    imgcontainer onclick
+        if status is "still"
+            change url to that of animated attribute
+            change status to "animated"
+        if status is "animated"
+            change url to that of "still"
+            change status to "still"
+
+API Information
+    API Key: DRB7jKmDoBDg0VkiLGyW8WAFVk5z67uN
+    Sample Link: "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
+    important calls:    data.rating, 
+                        data.images.original.url, 
+                        data.images.orginal_still.url
+    
