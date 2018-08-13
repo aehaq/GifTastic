@@ -1,8 +1,12 @@
 var topicsArray = ["MineCraft", "FortNite", "Overwatch", "League of Legends", "PUBg", "Monster Hunter World","Grand Theft Auto V", "No Man's Sky", "Super Smash Bros", "Dark Souls"]
 
 function displayButtons() {
+
+     $('.btnsHere').empty();
+    
     for (let i = 0; i < topicsArray.length; i++) {
-        
+
+               
         var topic = topicsArray[i];
         console.log(topic);
         var newBtn = $('<button>');
@@ -15,4 +19,25 @@ function displayButtons() {
     }
 }
 
-displayButtons()
+$(document).ready(function() {
+
+    displayButtons()  
+
+    $('#make-button').on("click", function(event) {
+        event.preventDefault()
+
+        var newTopic = $('#topic-input').val().trim() ;
+
+        if (newTopic != '' && topicsArray.indexOf(newTopic) === -1) {
+
+            topicsArray.push(newTopic)
+            $('#topic-input').val('')
+
+            displayButtons(); 
+        }
+    })
+
+
+    
+
+})
