@@ -1,0 +1,35 @@
+
+
+.banner {
+    position: fixed;
+    color: white;
+    background-color: #4b367c;
+    margin-top: 0px;
+    width: 100%;
+    margin-left: none;
+    margin-right: none;
+}
+
+.title-block {
+    padding: 20px;
+}
+
+.topic-button {
+    color: #4b367c;
+    background: white;
+}
+
+#logo {
+    width: 30px;
+    height: 30px;
+    align-content:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 150px;
+}
