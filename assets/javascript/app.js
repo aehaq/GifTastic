@@ -65,9 +65,9 @@ $(document).ready(function() {
 
         //Here we prime a link for an ajax call from the giphy API.
         //In order to do this we create a variable for the buttons value and append it as a query to a search URL
-        //Note: aside from the searchQuery and api key, the only additional specification necessary is the limit of 10 that we want.
+        //Note: aside from the searchQuery, the additional specifications are a limit of 10 gifs and a max MPAArating of pg.
         var searchQuery = $(this).val();
-        var queryUrl = 'http://api.giphy.com/v1/gifs/search?q=' + searchQuery + '&api_key=DRB7jKmDoBDg0VkiLGyW8WAFVk5z67uN&limit=10';
+        var queryUrl = 'http://api.giphy.com/v1/gifs/search?q=' + searchQuery + '&api_key=DRB7jKmDoBDg0VkiLGyW8WAFVk5z67uN&rating=pg&limit=10';
         console.log(queryUrl);
 
         $.ajax({
@@ -80,8 +80,6 @@ $(document).ready(function() {
 
             for (let i = 0; i < 10; i++) {
 
-                console.log("checkpost"+i)
-
                 var gif = result[i];
 
                 var newDiv = $('<div>');
@@ -90,6 +88,7 @@ $(document).ready(function() {
                 newDiv.append('<p>Rating: ' + gif.rating + '</p>')
 
                 var newImg = $('<img>');
+                newImg.addClass("gifs")
                 newImg.attr("src", gif.images.fixed_height_still.url);
                 newImg.attr("stillImg", gif.images.fixed_height_still.url);
                 newImg.attr("animImg", gif.images.fixed_height.url);
@@ -97,11 +96,25 @@ $(document).ready(function() {
 
                 newDiv.append(newImg);
                 $('.gifsHere').append(newDiv);
-                console.log(newDiv)
             }
 
         })
 
+    })
+
+    $(document).on("click", ".gifs", function() {
+
+        var status = $(this).attr("status");
+        var play = $(this).attr("animImg");
+        var pause = $(this).attr("stillImg");
+        
+        if (status === "still") {
+            $(this).attr("src", play)
+            $(this).attr("status", "animated")
+        } else if (status === "animated") {
+            $(this).attr("src", pause)
+            $(this).attr("status", "still")
+        }
     })
 
 
