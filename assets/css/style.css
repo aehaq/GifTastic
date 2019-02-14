@@ -1,6 +1,7 @@
 body {
     margin-left: 0px;
     margin-right: 0px;
+    background: lightgrey;
 }
 
 .banner {
@@ -40,12 +41,17 @@ body {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
-    padding-top: 200px;
+    min-height: 100vh;
 }
 
 .gif-container {
     float: left;
     margin: 10px;
+    padding-top: 200px;
+}
+
+.sidebar {
+    padding-top: 200px;
 }
 
 @media only screen and (max-width: 768px) {
